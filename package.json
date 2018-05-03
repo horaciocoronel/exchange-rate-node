@@ -1,0 +1,14 @@
+{
+  "name": "citeright-challenge-node",
+  "version": "1.0.0",
+  "description": "exchange rate app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Horacio Coronel",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
