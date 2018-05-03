@@ -46,7 +46,7 @@ const convertCurrency = (histDate, from, to, amount) => {
         "base_currency": from,
         "base_amount": amount,
         "conversion_currency": to,
-        "conversion_amount": exchangedAmount
+        "conversion_amount": Number(exchangedAmount.toFixed(2))
         })
     }
     )
@@ -54,7 +54,12 @@ const convertCurrency = (histDate, from, to, amount) => {
 
 convertCurrency('2016-06-05', 'USD', 'CAD', 100)
   .then((response) => {
-    return response
+    return JSON.stringify(response)
   }
   )
-  .catch(err => { console.log(err)})
+  .catch(err => { return err })
+
+module.exports = {
+  convertCurrency,
+  getExchangeRate
+}
