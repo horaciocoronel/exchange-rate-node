@@ -2,7 +2,7 @@
   "name": "citeright-challenge-node",
   "version": "1.0.0",
   "description": "exchange rate app",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "mocha ./**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
