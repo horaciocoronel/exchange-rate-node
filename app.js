@@ -13,11 +13,17 @@ const getExchangeRate = async(histDate, from, to) => {
         throw new Error(`Unable to get exchange rate for ${from} and ${to}`)
       }
     } catch (e) {
-      throw new Error(`ERROR: Unable to get getExchangeRate for ${from} and ${to}`);
+      throw new Error(`ERROR: Unable to get getExchangeRate for ${from} and ${to}. ${e}`);
     }
 }
 
 const convertCurrency = async(histDate, from, amount, to) => {
+  try {
+  // Validations
+  if(amount <= 0) {
+    throw new Error ('The amount to exchange must be larger than zero')
+    
+  }
   const data = await getExchangeRate(histDate, from, to);
   let rate = data.rate;
   let dateData = data.date;
@@ -30,10 +36,15 @@ const convertCurrency = async(histDate, from, amount, to) => {
     "conversion_currency": to,
     "conversion_amount": exchangedAmount
     })
-  
+  } catch (e) {
+      return (e)
+  }
 }
 
 module.exports = {
   convertCurrency,
   getExchangeRate
 }
+
+// convertCurrency('2017-02-09', 'ZAR', 132, 'TRY')
+  // .then(res => console.log(res))
